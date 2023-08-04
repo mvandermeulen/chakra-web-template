@@ -1,0 +1,24 @@
+name: lint
+on:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        linter:
+          - eslint
+          - prettier
+          - tsc
+    steps:
+      - uses: actions/checkout@v3
+      - uses: shun-shobon/actions/setup-node@master
+        with:
+          node-version-file: .tool-versions
+
+      - run: pnpm run lint:${{ matrix.linter }}

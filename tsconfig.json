@@ -1,0 +1,12 @@
+{
+  "extends": ["@tsconfig/strictest", "@tsconfig/vite-react"],
+  "compilerOptions": {
+    "allowJs": true,
+    "types": ["vite/client"],
+    "baseUrl": "./",
+    "paths": {
+      "~/*": ["./src/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}
